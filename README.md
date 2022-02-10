@@ -40,4 +40,4 @@ root                    (project root folder)
 * Ikaika Pulotu (ipulotu@byui.edu)
 * Taylor Paxman (taylor.paxman07@gmail.com)
 * Sergio Pontes (svpontes2015@gmail.com)
-* Josue Mora ()
+
