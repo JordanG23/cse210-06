@@ -7,6 +7,9 @@ class Handle_collision:
         self.lives = 3
         self.socore = 0 
         self._is_game_over = False
+        self.banner_score = cast.get_first_actor("banners")
+        self.banner_lives = cast.get_actors("banners")[1]
+        
 
 
         
@@ -22,15 +25,16 @@ class Handle_collision:
                 self._handle_dirt_collision(cast)
                 self._handle_enemy_collision(cast)
                 self._handle_stone_collision(cast)
-                ##self._handle_game_over(cast)
+                self._handle_game_over(cast)
 
 
     def _handle_gem_collision(self, cast):
         for i in cast.get_actors("gems"):
             if self.player.get_position().equals(i.get_position()):
                 self.socore += 100
+                self.banner_score.set_text(f"Score: {self.socore}")
                 cast.remove_actor("gems", i)
-            if self.lives <= 0:
+            if self.lives < 0:
                 cast.remove_actor("gems", i)
 
 
@@ -38,14 +42,14 @@ class Handle_collision:
          for i in cast.get_actors("grass"):
             if self.player.get_position().equals(i.get_position()):
                 cast.remove_actor("grass", i)
-            if self.lives <= 0:
+            if self.lives < 0:
                 cast.remove_actor("grass", i)
 
     def _handle_dirt_collision(self, cast):
          for i in cast.get_actors("dirt"):
             if self.player.get_position().equals(i.get_position()):
                  cast.remove_actor("dirt", i)
-            if self.lives <= 0:
+            if self.lives < 0:
                 cast.remove_actor("dirt", i)
 
     def _handle_enemy_collision(self, cast):                     ## ------------------------- Needs work----------------------------------
@@ -54,19 +58,27 @@ class Handle_collision:
                 self.lives -= 1
                 self.player.set_position(constants.START_POSITION)
                 cast.remove_actor("enemy", i)
-            if self.lives <= 0:
+            if self.lives < 0:
                 cast.remove_actor("enemy", i)
 
-    def _handle_stone_collision(self, cast):                   ## ------------------------- Needs work----------------------------------
-         for i in cast.get_actors("stone"):
+    def _handle_stone_collision(self, cast):                  
+         for i in cast.get_actors("stones"):
             if self.player.get_position().equals(i.get_position()):
                 self.lives -= 1
                 self.player.set_position(constants.START_POSITION)
-            if self.lives <= 0:
-                cast.remove_actor("stone", i)
+                if self.lives == 2:
+                    self.banner_lives.set_text(f"Lives Q Q")
+                elif self.lives == 1:
+                    self.banner_lives.set_text(f"Lives Q ")
+                elif self.lives == 0:
+                    self.banner_lives.set_text(f"Lives  ")
+            if self.lives < 0:
+                cast.remove_actor("stones", i)
 
-    ##def _handle_game_over(self, cast):
-       ## if self.lives <= 0:
+    def _handle_game_over(self, cast):
+       if self.lives < 0:
+           banner_gameover = cast.get_actors("banners")[2]
+           banner_gameover.set_text("Game Over")
 
             
 
