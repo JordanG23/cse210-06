@@ -61,8 +61,9 @@ class Handle_collision:
             if self.lives < 0:
                 cast.remove_actor("enemy", i)
 
-    def _handle_stone_collision(self, cast):                  
+    def _handle_stone_collision(self, cast):        
          for i in cast.get_actors("stones"):
+            
             if self.player.get_position().equals(i.get_position()):
                 self.lives -= 1
                 self.player.set_position(constants.START_POSITION)

@@ -18,14 +18,12 @@ class Stone(Actor):
     def __init__(self):                             
         "Constructs a level."
         super().__init__()
-        
+        self.set_velocity(Point(0,15))
 
-    def fall(self, levelcast):
-        for i in levelcast.get_all_actors():
-            if Point(self.actor._position.get_x, self.actor._position.get_y-1) != i.get_position():
-                self.set_velocity(Point(0,1))
+    def fall(self, cast):
+        for i in cast.get_all_actors():
+            if self._position.add(self._velocity).equals(i.get_position()):
                 self.move_next()
-                self.set_velocity(Point(0,0))
             
 
     def place_stone(self, levelcast): 
