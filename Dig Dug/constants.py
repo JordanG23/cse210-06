@@ -2,8 +2,8 @@ from game.shared.color import Color
 from game.shared.point import Point
 
 
-COLUMNS = 40
-ROWS = 20
+COLUMNS = 20
+ROWS = 40
 CELL_SIZE = 15
 MAX_X = 600
 MAX_Y = 900

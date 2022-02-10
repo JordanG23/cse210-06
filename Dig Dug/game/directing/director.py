@@ -1,4 +1,4 @@
-from asyncio import constants
+import constants
 from game.directing.handle_collision import Handle_collision
 
 
@@ -22,12 +22,14 @@ class Director:
         self._keyboard_service = keyboard_service
         self._video_service = video_service
         
+        
     def start_game(self, cast):
         """Starts the game using the given cast. Runs the main game loop.
 
         Args:
             cast (Cast): The cast of actors.
         """
+        self.hc = Handle_collision(cast)
         self._video_service.open_window()
         while self._video_service.is_window_open():
             self._get_inputs(cast)
@@ -51,14 +53,10 @@ class Director:
         Args:
             cast (Cast): The cast of actors.
         """
-        banner = cast.get_first_actor("banners")
         player = cast.get_first_actor("players")
-
-        banner.set_text("")
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
-        hc = Handle_collision(cast)
-        hc.execute(cast)
+        self.hc.execute(cast)
 
         player.move_next()
         

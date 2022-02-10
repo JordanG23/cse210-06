@@ -14,12 +14,27 @@ def main():
     cast = Cast()
     
     # create the banner
-    banner = Actor()
-    banner.set_text("")
-    banner.set_font_size(constants.FONT_SIZE)
-    banner.set_color(constants.WHITE)
-    banner.set_position(Point(constants.CELL_SIZE, 0))
-    cast.add_actor("banners", banner)
+    banner_score = Actor()
+    banner_score.set_text("Score: 0")
+    banner_score.set_font_size(constants.FONT_SIZE)
+    banner_score.set_color(constants.WHITE)
+    banner_score.set_position(Point(constants.CELL_SIZE, 0))
+    cast.add_actor("banners", banner_score)
+
+    banner_lives = Actor()
+    banner_lives.set_text("Lives: Q Q Q")
+    banner_lives.set_font_size(constants.FONT_SIZE)
+    banner_lives.set_color(constants.WHITE)
+    banner_lives.set_position(Point(constants.CELL_SIZE+100, 0))
+    cast.add_actor("banners", banner_lives)
+    
+    banner_gameover = Actor()
+    banner_gameover.set_text("")
+    banner_gameover.set_font_size(constants.FONT_SIZE*2)
+    banner_gameover.set_color(constants.WHITE)
+    banner_gameover.set_position(Point(round(constants.MAX_X/2), round(constants.MAX_Y/2)))
+    cast.add_actor("banners", banner_gameover)
+    
     
     # create the robot
     player = Actor()
