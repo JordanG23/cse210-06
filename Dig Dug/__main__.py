@@ -22,16 +22,12 @@ def main():
     cast.add_actor("banners", banner)
     
     # create the robot
-    x = int(constants.MAX_X / 2)
-    y = int(constants.START_LINE-15)
-    position = Point(x, y)
-
-    robot = Actor()
-    robot.set_text("#")
-    robot.set_font_size(constants.FONT_SIZE)
-    robot.set_color(constants.WHITE)
-    robot.set_position(position)
-    cast.add_actor("robots", robot)
+    player = Actor()
+    player.set_text("@")
+    player.set_font_size(constants.FONT_SIZE)
+    player.set_color(constants.WHITE)
+    player.set_position(constants.START_POSITION)
+    cast.add_actor("players", player)
 
 
     level = Level()
@@ -39,8 +35,7 @@ def main():
     cast.add_group(level.levelCast, 'grass')
     cast.add_group(level.levelCast, 'gems')
     cast.add_group(level.levelCast, 'stones')
-    print(cast.get_first_actor('gems'))
-
+    
     
     # start the game
     keyboard_service = KeyboardService(constants.CELL_SIZE)

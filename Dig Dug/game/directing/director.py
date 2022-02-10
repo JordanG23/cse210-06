@@ -1,3 +1,7 @@
+from asyncio import constants
+from game.directing.handle_collision import Handle_collision
+
+
 class Director:
     """A person who directs the game. 
     
@@ -37,9 +41,9 @@ class Director:
         Args:
             cast (Cast): The cast of actors.
         """
-        robot = cast.get_first_actor("robots")
+        player = cast.get_first_actor("players")
         velocity = self._keyboard_service.get_direction()
-        robot.set_velocity(velocity)        
+        player.set_velocity(velocity)        
 
     def _do_updates(self, cast):
         """Updates the robot's position and resolves any collisions with artifacts.
@@ -48,19 +52,24 @@ class Director:
             cast (Cast): The cast of actors.
         """
         banner = cast.get_first_actor("banners")
-        robot = cast.get_first_actor("robots")
-        artifacts = cast.get_actors("artifacts")
+        player = cast.get_first_actor("players")
 
         banner.set_text("")
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
-        robot.move_next()
+        hc = Handle_collision(cast)
+        hc.execute(cast)
+
+        player.move_next()
         
-        for artifact in artifacts:
-            if robot.get_position().equals(artifact.get_position()):
-                message = artifact.get_message()
-                banner.set_text(message)    
         
+           
+        
+
+
+
+
+
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
         
