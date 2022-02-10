@@ -5,7 +5,7 @@ class Handle_collision:
     def __init__(self, cast):
         self.player =  cast.get_first_actor("players")
         self.lives = 3
-        self.socore = 0 
+        self.score = 0 
         self._is_game_over = False
         self.banner_score = cast.get_first_actor("banners")
         self.banner_lives = cast.get_actors("banners")[1]
@@ -31,7 +31,7 @@ class Handle_collision:
     def _handle_gem_collision(self, cast):
         for i in cast.get_actors("gems"):
             if self.player.get_position().equals(i.get_position()):
-                self.socore += 100
+                self.score += 100
                 self.banner_score.set_text(f"Score: {self.socore}")
                 cast.remove_actor("gems", i)
             if self.lives < 0:
