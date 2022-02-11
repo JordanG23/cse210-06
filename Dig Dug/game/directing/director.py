@@ -1,9 +1,10 @@
-from asyncio import futures
-from pickle import FALSE
-from turtle import Turtle
+"""Director class file for the Dig Dug game
+   Author: Ikaika Pulotu
+   Comments: Jordan Greenwood"""
+
 import constants
 from game.directing.handle_collision import Handle_collision
-from game.shared.point import Point
+
 
 
 class Director:
@@ -64,15 +65,15 @@ class Director:
       
         
         players_position = player.get_position()
-        futuer_position = players_position.add(player.get_velocity())
+        future_position = players_position.add(player.get_velocity())
 
         no_move = False
         for i in cast.get_actors("stones"):
-            if  futuer_position.equals(i.get_position()): 
+            if  future_position.equals(i.get_position()): 
                 no_move = True
             
-        if not futuer_position.get_y() < constants.START_LINE-15 and not futuer_position.get_y() > max_y-15:
-            if not futuer_position.get_x() < 0 and not futuer_position.get_x() > max_x-15:
+        if not future_position.get_y() < constants.START_LINE-15 and not future_position.get_y() > max_y-15:
+            if not future_position.get_x() < 0 and not future_position.get_x() > max_x-15:
                 if not no_move:
                     player.move_next()
            

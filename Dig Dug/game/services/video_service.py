@@ -1,6 +1,8 @@
+"""The class for handling the video-service in the game.
+   Author: Ikaika Pulotu
+   Comments: Jordan Greenwood
+"""
 import pyray
-
-
 class VideoService:
     """Outputs the game state. The responsibility of the class of objects is to draw the game state 
     on the screen. 

@@ -1,7 +1,9 @@
+""" Keyboard Service Class for the Dig Dug game.
+    Author: Ikaika Pulotu
+    Comments: Jordan Greenwood
+"""
 import pyray
 from game.shared.point import Point
-
-
 class KeyboardService:
     """Detects player input. 
     
