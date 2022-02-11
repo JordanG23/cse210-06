@@ -29,6 +29,18 @@ class Color:
         self._green = green
         self._blue = blue 
         self._alpha = alpha
+        
+    def __eq__(self, other):
+        """  Comparese this instance agest another one
+        
+        Args: 
+            other (color): comparing instance
+            
+        """
+        if (isinstance(other, Color)):
+            return self._red  == other._red and self._green == other._green and self._blue == other._blue and self._alpha == other._alpha
+        else:
+            return False
 
     def to_tuple(self):
         """Gets the color as a tuple of four values (red, green, blue, alpha).

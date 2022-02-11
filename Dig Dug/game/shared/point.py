@@ -47,6 +47,18 @@ class Point:
         """
         return self._x == other.get_x() and self._y == other.get_y()
 
+    def __eq__(self, other):
+        """  Comparese this instance agest another one
+        
+        Args: 
+            other (Point): comparing instance
+            
+        """
+        if (isinstance(other, Point)):
+            return self._x  == other._x and self._y == other._y 
+        else:
+            return False    
+
     def get_x(self):
         """Gets the horizontal distance.
         
