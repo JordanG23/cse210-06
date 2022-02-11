@@ -34,7 +34,7 @@ class Level(Actor):
         """Function for adding dirt to the game.""" 
         numx = 0
         numy = 15
-        for x in range(constants.MAX_X*(constants.MAX_Y-constants.START_LINE)):
+        for x in range(int((constants.MAX_X / constants.CELL_SIZE)*((constants.MAX_Y-constants.START_LINE) / constants.CELL_SIZE))):
             actor = Actor()
             actor.set_text("#")
             actor.set_color(constants.BROWN)
@@ -50,7 +50,7 @@ class Level(Actor):
     def add_grass(self): 
         """Function for adding the grass element in the game."""
         numx = 0
-        for x in range(constants.MAX_X):
+        for x in range(int(constants.MAX_X / constants.CELL_SIZE)):
            actor = Actor()
            actor.set_text("%")
            actor.set_color(constants.GREEN)
