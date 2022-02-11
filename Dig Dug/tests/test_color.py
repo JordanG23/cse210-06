@@ -1,4 +1,4 @@
-""" Test file for the color Class of the Cycle game
+""" Test file for the color Class of the Dig Dug game
     Author: Ikaika Pulotu
     Comments: Jordan Greenwood
 """

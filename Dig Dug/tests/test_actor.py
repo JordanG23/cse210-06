@@ -44,7 +44,7 @@ def test_get_velocity():
 
 
 def test_move_next():
-  """Testing that the player is able to move to collect the gems and rocks"""
+  """Testing that the player is able to move to collect the gems."""
   actor = Actor()
   actor.set_velocity(Point(0,0))
   actor.move_next()

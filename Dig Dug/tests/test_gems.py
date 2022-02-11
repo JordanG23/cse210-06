@@ -1,6 +1,6 @@
-""" Testing for the Cycle class of Cycle
+""" Testing for the Gem class of Dig Dug
     Author: Kendra Anderson
-    Comments: 
+    Comments: Jordan Greenwood
     CSE210
 """
 import pytest
@@ -9,7 +9,7 @@ from game.casting.cast import Cast
 from game.casting.level import Level
 
 def test_place_gem():
-    """Comment"""
+    """Testing for the placement of the gems in the game."""
     gem = Gems()
     Level.levelCast = Cast()
 
