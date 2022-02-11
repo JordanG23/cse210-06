@@ -1,3 +1,7 @@
+""" Point class file for the Dig Dug game.
+    Author: Code taken from CSE210 Week 5 example Snake game.
+    Comments: Jordan Greenwood
+"""
 class Point:
     """A distance from a relative origin (0, 0).
 

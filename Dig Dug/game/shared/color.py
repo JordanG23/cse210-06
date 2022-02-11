@@ -1,3 +1,7 @@
+""" Color class file for the Dig Dug game.
+    Author: Code from CSE210 Week 5 Snake game.
+    Comments: Jordan Greenwood
+"""
 class Color:
     """A color.
 

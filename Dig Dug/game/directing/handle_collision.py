@@ -1,10 +1,18 @@
+"""Collision handling class for the Dig Dug game.
+   Author: Ikaika Pulotu
+   Comments: Jordan Greenwood
+   Edits by: Kendra Anderson
+"""
 import constants
 
 
 class Handle_collision:
 
     def __init__(self, cast):
-        self.player = cast.get_first_actor("players")
+        """Constructor function to start the instances 
+           surrounding the collisions in gameplay
+        """
+        self.player =  cast.get_first_actor("players")
         self.lives = 3
         self.score = 0
         self._is_game_over = False
@@ -26,6 +34,10 @@ class Handle_collision:
             self._handle_game_over(cast)
 
     def _handle_gem_collision(self, cast):
+        """Function for the handling of the gems colliding with player.
+        Args:
+            cast (Cast): The cast of Actors in the game.
+        """
         for i in cast.get_actors("gems"):
             if self.player.get_position().equals(i.get_position()):
                 self.score += 100
@@ -35,6 +47,10 @@ class Handle_collision:
                 cast.remove_actor("gems", i)
 
     def _handle_grass_collision(self, cast):
+        """Function for the handling of the grass colliding with player.
+        Args:
+            cast (Cast): The cast of Actors in the game.
+        """
         for i in cast.get_actors("grass"):
             if self.player.get_position().equals(i.get_position()):
                 cast.remove_actor("grass", i)
@@ -42,14 +58,21 @@ class Handle_collision:
                 cast.remove_actor("grass", i)
 
     def _handle_dirt_collision(self, cast):
+        """Function for the handling of the grass colliding with player.
+        Args:
+            cast (Cast): The cast of Actors in the game.
+        """
         for i in cast.get_actors("dirt"):
             if self.player.get_position().equals(i.get_position()):
                 cast.remove_actor("dirt", i)
             if self.lives < 0:
                 cast.remove_actor("dirt", i)
 
-    # ------------------------- Needs work----------------------------------
     def _handle_enemy_collision(self, cast):
+        """Function for the handling of the enemies colliding with player.
+        Args:
+            cast (Cast): The cast of Actors in the game.
+        """                     ## ------------------------- Needs work----------------------------------
         for i in cast.get_actors("enemy"):
             if self.player.get_position().equals(i.get_position()):
                 self.lives -= 1
@@ -58,9 +81,13 @@ class Handle_collision:
             if self.lives < 0:
                 cast.remove_actor("enemy", i)
 
-    def _handle_stone_collision(self, cast):
+    def _handle_stone_collision(self, cast): 
+        """Function for the handling of the stones colliding with player.
+        Args:
+            cast (Cast): The cast of Actors in the game.
+        """       
         for i in cast.get_actors("stones"):
-
+            
             if self.player.get_position().equals(i.get_position()):
                 self.lives -= 1
                 self.player.set_position(constants.START_POSITION)
@@ -75,6 +102,16 @@ class Handle_collision:
             cast.remove_actor("stones", i)
 
     def _handle_game_over(self, cast):
+        """Function for the handling of the game when the player is out of lives.
+        Args:
+            cast (Cast): The cast of Actors in the game.
+        """
         if self.lives < 0:
-            banner_gameover = cast.get_actors("banners")[2]
-            banner_gameover.set_text("Game Over")
+           banner_gameover = cast.get_actors("banners")[2]
+           banner_gameover.set_text("Game Over")
+
+            
+
+
+            
+
