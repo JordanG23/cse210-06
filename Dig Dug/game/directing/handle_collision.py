@@ -32,7 +32,7 @@ class Handle_collision:
         for i in cast.get_actors("gems"):
             if self.player.get_position().equals(i.get_position()):
                 self.score += 100
-                self.banner_score.set_text(f"Score: {self.socore}")
+                self.banner_score.set_text(f"Score: {self.score}")
                 cast.remove_actor("gems", i)
             if self.lives < 0:
                 cast.remove_actor("gems", i)
