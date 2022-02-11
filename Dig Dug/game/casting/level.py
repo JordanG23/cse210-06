@@ -1,5 +1,7 @@
-import random
-import re
+"""Level class for the Dig Dug game.
+   Author: Ikaika Pulotu
+   Comments by: Jordan Greenwood
+   """
 import constants
 from game.casting.actor import Actor
 from game.shared.point import Point
@@ -28,7 +30,8 @@ class Level(Actor):
 
         
         ## Create dirt
-    def add_dirt(self): 
+    def add_dirt(self):
+        """Function for adding dirt to the game.""" 
         numx = 0
         numy = 15
         for x in range(constants.MAX_X*(constants.MAX_Y-constants.START_LINE)):
@@ -45,6 +48,7 @@ class Level(Actor):
                 break 
             
     def add_grass(self): 
+        """Function for adding the grass element in the game."""
         numx = 0
         for x in range(constants.MAX_X):
            actor = Actor()
@@ -54,14 +58,15 @@ class Level(Actor):
            numx += 15
            self.levelCast.add_actor('grass', actor)
 
-
     def add_stones(self): 
+        """Function for adding stones in the game."""
         for x in range(constants.STONES):
             stone = Stone()
             stone.place_stone(self.levelCast)
             self.levelCast.add_actor('stones', stone)
 
-    def add_gems(self):   
+    def add_gems(self): 
+        """Function for adding gems to the game."""  
         for x in range(constants.GEMS):
             gem = Gems()
             gem.place_gem(self.levelCast)

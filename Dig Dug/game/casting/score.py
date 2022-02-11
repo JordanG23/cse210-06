@@ -1,11 +1,14 @@
+"""The file for the Score class in the Dig Dug Game.
+   Author: Ikaika Pulotu
+   Comments by: Jordan Greenwood
+"""
 from game.casting.actor import Actor
-
 
 class Score(Actor):
     """
     A record of points made or lost. 
     
-    The responsibility of Score is to keep track of the points the player has earned by eating food.
+    The responsibility of Score is to keep track of the points the player has earned by collecting gems.
     It contains methods for adding and getting points. Client should use get_text() to get a string 
     representation of the points earned.
 
@@ -13,6 +16,8 @@ class Score(Actor):
         _points (int): The points earned in the game.
     """
     def __init__(self):
+        """Constructor function inheriting from the Actor class.
+        """
         super().__init__()
         self._points = 0
         self.add_points(0)
