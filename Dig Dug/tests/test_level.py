@@ -28,7 +28,7 @@ def test_add_stones():
 
     level = Level()
     level.add_stones()
-    assert level._text == "0"
+    assert level._text == "O"
     assert level._color == constants.gray
  
 
