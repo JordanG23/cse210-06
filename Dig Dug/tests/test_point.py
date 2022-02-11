@@ -1,4 +1,4 @@
-""" Test file for the Point class of the Cycle game
+""" Test file for the Point class of the Dig Dug game
     Author: Ikaika Pulotu
     Comments: Jordan Greenwood
 """

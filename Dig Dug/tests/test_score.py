@@ -1,4 +1,4 @@
-""" Testing for the Score class of Cycle
+""" Testing for the Score class of Dig Dug
     Author: Kendra Anderson
     Comments: Kendra Anderson
     CSE210
