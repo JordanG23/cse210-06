@@ -1,6 +1,6 @@
-""" Testing for the Cycle class of Cycle
+""" Testing for the level class of Dig Dug
     Author: Kendra Anderson
-    Comments: 
+    Comments: Jordan Greenwood
     CSE210
 """
 import pytest
@@ -9,6 +9,7 @@ from game.casting.level import Level
 
 
 def test_add_dirt():
+    """Testing for the dirt function adding dirt."""
 
     level = Level()
     level.add_dirt()
@@ -17,6 +18,7 @@ def test_add_dirt():
 
 
 def test_add_grass():
+    """Testing for the grass function adding grass."""
 
     level = Level()
     level.add_grass()
@@ -25,6 +27,7 @@ def test_add_grass():
 
 
 def test_add_stones():
+    """Testing for the stone function adding stones."""
 
     level = Level()
     level.add_stones()
@@ -33,6 +36,7 @@ def test_add_stones():
  
 
 def test_add_gems():
+    """Testing for the gems function adding gems."""
 
     level = Level()
     level.add_gems()
