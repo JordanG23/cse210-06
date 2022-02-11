@@ -27,7 +27,7 @@ def test_execute():
 
 
 def test_handle_gem_collision():
-    """ checks for how the game handles gem collisions."""
+    """ Checks for how the game handles gem collisions."""
     collision = Handle_collision()
     cast = Cast()
     assert collision.handle_gem_collision(cast)
