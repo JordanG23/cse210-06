@@ -76,16 +76,19 @@ class Director:
                 if not no_move:
                     player.move_next()
 
-        # Get players new position
-        player_pos = player.get_position()
 
-        # Check to see if stone will move to dirt position
+        # Check to see where stone will move
         for stone in cast.get_actors("stones"):
             stone_pos = stone.get_position()
             stone_future_pos = stone_pos.add(stone.get_velocity())
 
-            # Keep moving the rock down until it hits dirt
             stone_move = True
+            
+            # If it's going to fall off screen, don't move
+            if stone_future_pos.get_y() > max_y - 15:
+                stone_move = False
+
+            # If it's going to hit dirt, don't move
             for dirt in cast.get_actors("dirt"):
                 dirt_pos = dirt.get_position()
                 stone_pos = stone.get_position()
@@ -93,6 +96,24 @@ class Director:
                 if stone_future_pos.equals(dirt_pos):
                     stone_move = False
                     break
+            
+            # If it's going to hit another stone, don't move
+            for rock in cast.get_actors("stones"):
+                rock_pos = rock.get_position()
+                stone_pos = stone.get_position()
+                stone_future_pos = stone_pos.add(stone.get_velocity())
+                if stone_future_pos.equals(rock_pos):
+                    stone_move = False
+                    break
+
+            # If it's going to hit a gem, don't move
+            for gem in cast.get_actors("gems"):
+                gem_pos = gem.get_position()
+                stone_pos = stone.get_position()
+                stone_future_pos = stone_pos.add(stone.get_velocity())
+                if stone_future_pos.equals(gem_pos):
+                    stone_move = False
+            
             if stone_move:
                 stone.move_next()
 
