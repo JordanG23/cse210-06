@@ -49,7 +49,8 @@ class Director:
         """
         player = cast.get_first_actor("players")
         velocity = self._keyboard_service.get_direction()
-        player.set_velocity(velocity)        
+        player.set_velocity(velocity)
+
 
     def _do_updates(self, cast):
         """Updates the robot's position and resolves any collisions with artifacts.
@@ -61,31 +62,41 @@ class Director:
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         self.hc.execute(cast)
-      
         
-        players_position = player.get_position()
-        futuer_position = players_position.add(player.get_velocity())
-
         no_move = False
+        # Get player position and see where they will move
+        players_position = player.get_position()
+        player_future_pos = players_position.add(player.get_velocity())
+
         for i in cast.get_actors("stones"):
-            if  futuer_position.equals(i.get_position()): 
+            if  player_future_pos.equals(i.get_position()): 
                 no_move = True
-            
-        if not futuer_position.get_y() < constants.START_LINE-15 and not futuer_position.get_y() > max_y-15:
-            if not futuer_position.get_x() < 0 and not futuer_position.get_x() > max_x-15:
+
+        # Check to see if player move is out of bounds
+        if not player_future_pos.get_y() < constants.START_LINE-15 and not player_future_pos.get_y() > max_y-15:
+            if not player_future_pos.get_x() < 0 and not player_future_pos.get_x() > max_x-15:
                 if not no_move:
                     player.move_next()
-           
-
-   
         
+        # Get players new position
+        player_pos = player.get_position()
         
-           
-        
+        # Check to see if stone will move to dirt position
+        for stone in cast.get_actors("stones"):
+            stone_pos = stone.get_position()
+            stone_future_pos = stone_pos.add(stone.get_velocity())
 
-
-
-
+            # Keep moving the rock down until it hits dirt
+            stone_move = True
+            for dirt in cast.get_actors("dirt"):
+                dirt_pos = dirt.get_position()
+                stone_pos = stone.get_position()
+                stone_future_pos = stone_pos.add(stone.get_velocity())
+                if stone_future_pos.equals(dirt_pos):
+                    stone_move = False
+                    break
+            if stone_move:
+                stone.move_next()
 
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
