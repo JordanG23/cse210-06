@@ -1,3 +1,7 @@
+"""Casting class of the Dig Dug game.
+   Author: Code taken from CSE210 - Week 5 Snake game example program.
+   Edits by: Ikaika Pulotu
+   Comments by: Jordan Greenwood"""
 import constants
 from game.shared.color import Color
 from game.shared.point import Point

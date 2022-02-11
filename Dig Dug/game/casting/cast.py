@@ -1,3 +1,6 @@
+""" Class file for Cast in the Cycle game.
+    Author: CSE210 - Week 5 Snake game code example.
+"""
 class Cast:
     """A collection of actors.
 
@@ -75,6 +78,7 @@ class Cast:
             self._actors[group].remove(actor)
 
     def add_group(self, cast, group):
+        """ Adds another group of actors."""
         for i in cast.get_actors(group):
             self.add_actor(group, i)
 

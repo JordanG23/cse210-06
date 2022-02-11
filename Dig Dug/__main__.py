@@ -1,3 +1,7 @@
+"""The Main file that starts the game running through the functions.
+   Author: Ikaika Pulotu
+   Comments by: Jordan Greenwood
+"""
 import constants
 from game.casting.actor import Actor
 from game.casting.level import Level
@@ -9,6 +13,8 @@ from game.shared.color import Color
 from game.shared.point import Point
 
 def main():
+    """The main function that starts up all the differing
+    functions within the game."""
     
     # create the cast
     cast = Cast()

@@ -1,3 +1,4 @@
+"""The file that holds the constants for the program."""
 from game.shared.color import Color
 from game.shared.point import Point
 
