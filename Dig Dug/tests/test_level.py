@@ -13,8 +13,8 @@ def test_add_dirt():
 
     level = Level()
     level.add_dirt()
-    assert level._text == "#"
-    assert level._color == constants.BROWN
+    assert level.levelCast.get_first_actor._text == "#"
+    assert level.levelCast.get_first_actor._color == constants.BROWN
 
 
 def test_add_grass():
@@ -22,8 +22,8 @@ def test_add_grass():
 
     level = Level()
     level.add_grass()
-    assert level._text == "%"
-    assert level._color == constants.GREEN
+    assert level.levelCast.get_first_actor._text == "%"
+    assert level.levelCast.get_first_actor._color == constants.GREEN
 
 
 def test_add_stones():
@@ -31,8 +31,8 @@ def test_add_stones():
 
     level = Level()
     level.add_stones()
-    assert level._text == "O"
-    assert level._color == constants.gray
+    assert level.levelCast.get_first_actor._text == "O"
+    assert level.levelCast.get_first_actor._color == constants.gray
  
 
 def test_add_gems():
@@ -40,7 +40,7 @@ def test_add_gems():
 
     level = Level()
     level.add_gems()
-    assert level._text =="*"
+    assert level.levelCast.get_first_actor._text =="*"
 
 
 pytest.main(["-v", "--tb=line", "-rN", __file__])

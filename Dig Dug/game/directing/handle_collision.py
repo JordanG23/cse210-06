@@ -5,6 +5,7 @@
 """
 import constants
 
+
 class Handle_collision:
 
     def __init__(self, cast):
@@ -13,28 +14,24 @@ class Handle_collision:
         """
         self.player =  cast.get_first_actor("players")
         self.lives = 3
-        self.score = 0 
+        self.score = 0
         self._is_game_over = False
         self.banner_score = cast.get_first_actor("banners")
         self.banner_lives = cast.get_actors("banners")[1]
-        
 
-
-        
     def execute(self, cast):
         """Executes the handle collisions action.
         Args:
             cast (Cast): The cast of Actors in the game.
-            
+
         """
         if not self._is_game_over:
-                self._handle_gem_collision(cast)
-                self._handle_grass_collision(cast)
-                self._handle_dirt_collision(cast)
-                self._handle_enemy_collision(cast)
-                self._handle_stone_collision(cast)
-                self._handle_game_over(cast)
-
+            self._handle_gem_collision(cast)
+            self._handle_grass_collision(cast)
+            self._handle_dirt_collision(cast)
+            self._handle_enemy_collision(cast)
+            self._handle_stone_collision(cast)
+            self._handle_game_over(cast)
 
     def _handle_gem_collision(self, cast):
         """Function for the handling of the gems colliding with player.
@@ -48,7 +45,6 @@ class Handle_collision:
                 cast.remove_actor("gems", i)
             if self.lives < 0:
                 cast.remove_actor("gems", i)
-
 
     def _handle_grass_collision(self, cast):
         """Function for the handling of the grass colliding with player.
@@ -68,7 +64,7 @@ class Handle_collision:
         """
         for i in cast.get_actors("dirt"):
             if self.player.get_position().equals(i.get_position()):
-                 cast.remove_actor("dirt", i)
+                cast.remove_actor("dirt", i)
             if self.lives < 0:
                 cast.remove_actor("dirt", i)
 
@@ -95,14 +91,15 @@ class Handle_collision:
             if self.player.get_position().equals(i.get_position()):
                 self.lives -= 1
                 self.player.set_position(constants.START_POSITION)
-                if self.lives == 2:
-                    self.banner_lives.set_text(f"Lives Q Q")
-                elif self.lives == 1:
-                    self.banner_lives.set_text(f"Lives Q ")
-                elif self.lives == 0:
-                    self.banner_lives.set_text(f"Lives  ")
-            if self.lives < 0:
-                cast.remove_actor("stones", i)
+        
+        if self.lives == 2:
+            self.banner_lives.set_text(f"Lives Q Q")
+        elif self.lives == 1:
+            self.banner_lives.set_text(f"Lives Q ")
+        elif self.lives == 0:
+            self.banner_lives.set_text(f"Lives  ")
+        if self.lives < 0:
+            cast.remove_actor("stones", i)
 
     def _handle_game_over(self, cast):
         """Function for the handling of the game when the player is out of lives.
