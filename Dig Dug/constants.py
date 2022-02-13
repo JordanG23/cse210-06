@@ -1,6 +1,8 @@
 """The file that holds the constants for the program."""
+import random
 from game.shared.color import Color
 from game.shared.point import Point
+
 
 
 COLUMNS = 40
@@ -24,5 +26,5 @@ GREEN = Color(0, 255, 0)
 WHITE = Color(255, 255, 255)
 
 ## Number of gems and stones in level 
-STONES = 20 
-GEMS = 7
+STONES = random.randint(20, 30)
+GEMS = random.randint(7, 15)
