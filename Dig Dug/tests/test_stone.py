@@ -6,12 +6,14 @@
 import pytest
 import constants
 from game.casting.stone import Stone
+from game.casting.level import Level
 
 
 def test_place_stone():
     """Testing for the placement of the stones."""
     stone = Stone()
-    stone.place_stone()
+    level = Level()
+    stone.place_stone(level.levelCast)
     assert stone._text == "O"
     assert stone._color == constants.gray
 
