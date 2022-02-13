@@ -29,7 +29,6 @@ class Handle_collision:
             self._handle_gem_collision(cast)
             self._handle_grass_collision(cast)
             self._handle_dirt_collision(cast)
-            self._handle_enemy_collision(cast)
             self._handle_stone_collision(cast)
             self._handle_game_over(cast)
 
@@ -68,18 +67,7 @@ class Handle_collision:
             if self.lives < 0:
                 cast.remove_actor("dirt", i)
 
-    def _handle_enemy_collision(self, cast):
-        """Function for the handling of the enemies colliding with player.
-        Args:
-            cast (Cast): The cast of Actors in the game.
-        """                     ## ------------------------- Needs work----------------------------------
-        for i in cast.get_actors("enemy"):
-            if self.player.get_position().equals(i.get_position()):
-                self.lives -= 1
-                self.player.set_position(constants.START_POSITION)
-                cast.remove_actor("enemy", i)
-            if self.lives < 0:
-                cast.remove_actor("enemy", i)
+   
 
     def _handle_stone_collision(self, cast): 
         """Function for the handling of the stones colliding with player.
